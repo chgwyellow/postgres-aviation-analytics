@@ -1,0 +1,35 @@
+### --- Database Tools --- ###
+# DBeaver
+.dbeaver/
+.dbeaver-data-sources.xml
+*.dbeaver-data-sources.xml.bak
+
+# pgAdmin
+pgadmin*.storage
+pgadmin*.conf
+
+### --- SQL & Data --- ###
+# Avoid committing raw data dumps or large datasets
+*.dump
+*.backup
+*.sql_history
+# If you have a specific data folder for raw files
+data/raw/
+data/temp/
+
+### --- Environment & Secrets --- ###
+.env
+.env.local
+.db_credentials
+
+### --- OS Specific --- ###
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+### --- IDE --- ###
+.vscode/
+.idea/
+*.swp
+*.log

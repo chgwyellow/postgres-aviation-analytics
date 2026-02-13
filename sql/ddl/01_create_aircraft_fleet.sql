@@ -9,7 +9,7 @@ SET search_path TO core_ops,
     public;
 -- 1. Create the aircraft_fleet table
 -- This table stores the fundamental metadata for each aircraft
-CREATE TABLE IF NOT EXISTS core_ops.aircraft_fleet (
+CREATE TABLE IF NOT EXISTS core_ops.dim_aircraft_fleet (
     aircraft_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     tail_number VARCHAR(10) UNIQUE NOT NULL,
     serial_number VARCHAR(50) UNIQUE NOT NULL,
@@ -24,14 +24,14 @@ CREATE TABLE IF NOT EXISTS core_ops.aircraft_fleet (
     CONSTRAINT cycles_non_negative CHECK (total_flight_cycles >= 0)
 );
 -- 2. Add comments for documentation (Standard practice in large organizations)
-COMMENT ON TABLE core_ops.aircraft_fleet IS 'Master table containing all aircraft metadata and cumulative flight metrics.';
-COMMENT ON COLUMN core_ops.aircraft_fleet.tail_number IS 'The unique registration mark visible on the exterior of the aircraft.';
+COMMENT ON TABLE core_ops.dim_aircraft_fleet IS 'Master table containing all aircraft metadata and cumulative flight metrics.';
+COMMENT ON COLUMN core_ops.dim_aircraft_fleet.tail_number IS 'The unique registration mark visible on the exterior of the aircraft.';
 -- 3. Verify the table structure
 SELECT column_name,
     data_type,
     is_nullable,
     column_default
 FROM information_schema.COLUMNS
-WHERE table_name = 'aircraft_fleet'
+WHERE table_name = 'dim_aircraft_fleet'
     AND table_schema = 'core_ops'
 ORDER BY ordinal_position;

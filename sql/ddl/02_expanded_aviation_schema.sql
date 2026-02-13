@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS core_ops.dim_airports(
 );
 -- Parts Inventory Table
 -- Tracks specific high-value components linked to aircraft.
-CREATE TABLE IF NOT EXISTS core_ops.parts_inventory(
+CREATE TABLE IF NOT EXISTS core_ops.dim_parts_inventory(
     part_uuid UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     part_number VARCHAR(50) NOT NULL,
     serial_number VARCHAR(50) NOT NULL,
@@ -29,14 +29,14 @@ CREATE TABLE IF NOT EXISTS core_ops.parts_inventory(
         category IN ('Engine', 'Avionics', 'Landing Gear', 'Fuselage')
     ),
     -- ON DELETE SET NULL: If an aircraft is retired, the part record remains for history but becomes unassigned.
-    assign_aircraft_id UUID REFERENCES core_ops.aircraft_fleet(aircraft_id) ON DELETE
+    assign_aircraft_id UUID REFERENCES core_ops.dim_aircraft_fleet(aircraft_id) ON DELETE
     SET NULL,
         installation_date DATE,
         last_inspection_date TIMESTAMPTZ,
         current_status VARCHAR(20) DEFAULT 'Serviceable'
 );
 COMMENT ON TABLE core_ops.dim_airports IS 'Reference table for all international airports and their timezones.';
-COMMENT ON TABLE core_ops.parts_inventory IS 'Inventory of critical aircraft components and their current installations.';
+COMMENT ON TABLE core_ops.dim_parts_inventory IS 'Inventory of critical aircraft components and their current installations.';
 -- Quick validation
 SELECT tc.table_name,
     kcu.column_name,

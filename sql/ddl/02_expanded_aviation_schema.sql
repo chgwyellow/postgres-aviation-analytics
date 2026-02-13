@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS core_ops.dim_airports(
 CREATE TABLE IF NOT EXISTS core_ops.dim_parts_inventory(
     part_uuid UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     part_number VARCHAR(50) NOT NULL,
-    serial_number VARCHAR(50) NOT NULL,
+    serial_number VARCHAR(50) UNIQUE NOT NULL,
     part_name VARCHAR(100) NOT NULL,
     category VARCHAR(50) CHECK (
         category IN ('Engine', 'Avionics', 'Landing Gear', 'Fuselage')

@@ -24,7 +24,7 @@ WITH maintenance_update AS (
             VALUES (
                     'SN-B-58201-E1',
                     'Under Repair',
-                    '2026-02-13'::date
+                    '2026-02-13'::date -- :: is type casting
                 ),
                 (
                     'SN-B-58201-B1',

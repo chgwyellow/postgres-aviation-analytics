@@ -17,6 +17,30 @@ VALUES (
         'Asia/Taipei'
     ),
     (
+        'RMQ',
+        'RCMQ',
+        'Taichung International Airport',
+        'Taichung',
+        'Taiwan',
+        'Asia/Taipei'
+    ),
+    (
+        'KHH',
+        'RCKH',
+        'Kaohsiung International Airport',
+        'Kaohsiung',
+        'Taiwan',
+        'Asia/Taipei'
+    ),
+    (
+        'MFM',
+        'VMMC',
+        'Macau International Airport',
+        'Macau',
+        'Macau',
+        'Asia/Macau'
+    ),
+    (
         'HKG',
         'VHHH',
         'Hong Kong International Airport',
@@ -41,6 +65,78 @@ VALUES (
         'Asia/Tokyo'
     ),
     (
+        'NGO',
+        'RJGG',
+        'Chubu Centrair International Airport',
+        'Nagoya',
+        'Japan',
+        'Asia/Tokyo'
+    ),
+    (
+        'FUK',
+        'RJFF',
+        'Fukuoka Airport',
+        'Fukuoka',
+        'Japan',
+        'Asia/Tokyo'
+    ),
+    (
+        'CTS',
+        'RJCC',
+        'New Chitose Airport',
+        'Sapporo',
+        'Japan',
+        'Asia/Tokyo'
+    ),
+    (
+        'OKA',
+        'ROAH',
+        'Naha Airport',
+        'Okinawa',
+        'Japan',
+        'Asia/Tokyo'
+    ),
+    (
+        'KMJ',
+        'RJFT',
+        'Kumamoto Airport',
+        'Kumamoto',
+        'Japan',
+        'Asia/Tokyo'
+    ),
+    (
+        'UKB',
+        'RJBE',
+        'Kobe Airport',
+        'Kobe',
+        'Japan',
+        'Asia/Tokyo'
+    ),
+    (
+        'SDJ',
+        'RJSS',
+        'Sendai Airport',
+        'Sendai',
+        'Japan',
+        'Asia/Tokyo'
+    ),
+    (
+        'HKD',
+        'RJCH',
+        'Hakodate Airport',
+        'Hakodate',
+        'Japan',
+        'Asia/Tokyo'
+    ),
+    (
+        'PUS',
+        'RKPK',
+        'Gimhae International Airport',
+        'Busan',
+        'South Korea',
+        'Asia/Seoul'
+    ),
+    (
         'BKK',
         'VTBS',
         'Suvarnabhumi Airport',
@@ -57,14 +153,6 @@ VALUES (
         'Asia/Singapore'
     ),
     (
-        'MNL',
-        'RPLL',
-        'Ninoy Aquino International Airport',
-        'Manila',
-        'Philippines',
-        'Asia/Manila'
-    ),
-    (
         'SGN',
         'VVTS',
         'Tan Son Nhat International Airport',
@@ -73,18 +161,110 @@ VALUES (
         'Asia/Ho_Chi_Minh'
     ),
     (
-        'OKA',
-        'ROAH',
-        'Naha Airport',
-        'Okinawa',
-        'Japan',
-        'Asia/Tokyo'
+        'DAD',
+        'VVDN',
+        'Da Nang International Airport',
+        'Da Nang',
+        'Vietnam',
+        'Asia/Ho_Chi_Minh'
     ),
     (
-        'CTS',
-        'RJCC',
-        'New Chitose Airport',
-        'Sapporo',
-        'Japan',
-        'Asia/Tokyo'
-    ) ON CONFLICT (iata_code) DO NOTHING;
+        'HAN',
+        'VVNB',
+        'Noi Bai International Airport',
+        'Hanoi',
+        'Vietnam',
+        'Asia/Hanoi'
+    ),
+    (
+        'PQC',
+        'VVPQ',
+        'Phu Quoc International Airport',
+        'Phu Quoc',
+        'Vietnam',
+        'Asia/Ho_Chi_Minh'
+    ),
+    (
+        'MNL',
+        'RPLL',
+        'Ninoy Aquino International Airport',
+        'Manila',
+        'Philippines',
+        'Asia/Manila'
+    ),
+    (
+        'CEB',
+        'RPVM',
+        'Mactan–Cebu International Airport',
+        'Cebu',
+        'Philippines',
+        'Asia/Manila'
+    ),
+    (
+        'KUL',
+        'WMKK',
+        'Kuala Lumpur International Airport',
+        'Kuala Lumpur',
+        'Malaysia',
+        'Asia/Kuala_Lumpur'
+    ),
+    (
+        'CGK',
+        'WIII',
+        'Soekarno–Hatta International Airport',
+        'Jakarta',
+        'Indonesia',
+        'Asia/Jakarta'
+    ),
+    (
+        'LAX',
+        'KLAX',
+        'Los Angeles International Airport',
+        'Los Angeles',
+        'USA',
+        'America/Los_Angeles'
+    ),
+    (
+        'SFO',
+        'KSFO',
+        'San Francisco International Airport',
+        'San Francisco',
+        'USA',
+        'America/Los_Angeles'
+    ),
+    (
+        'SEA',
+        'KSEA',
+        'Seattle-Tacoma International Airport',
+        'Seattle',
+        'USA',
+        'America/Los_Angeles'
+    ),
+    (
+        'ONT',
+        'KONT',
+        'Ontario International Airport',
+        'Ontario',
+        'USA',
+        'America/Los_Angeles'
+    ),
+    (
+        'PHX',
+        'KPHX',
+        'Phoenix Sky Harbor International Airport',
+        'Phoenix',
+        'USA',
+        'America/Phoenix'
+    ),
+    (
+        'PRG',
+        'LKPR',
+        'Vaclav Havel Airport Prague',
+        'Prague',
+        'Czech Republic',
+        'Europe/Prague'
+    ) ON CONFLICT (iata_code) DO
+UPDATE
+SET airport_name = EXCLUDED.airport_name,
+    city = EXCLUDED.city,
+    timezone = EXCLUDED.timezone;
